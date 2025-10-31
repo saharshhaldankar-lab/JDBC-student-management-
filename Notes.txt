@@ -1,0 +1,47 @@
+9/10/25
+What is JDBC?
+    -JDBC stands for java databasr connectivity 
+    -It is an API (application programming interface) in java
+    -API is bridge which connect server to server
+    -It allow java programs to connect and interact with databases (mysql, oracle, postgreesql etc)
+    -JDBC provides a standard way to -established a connection between java and database
+                                     -send sql queries
+                                     - retrive and process the result 
+                        
+Why use JDBC?
+    -It is platform indepented way to access databases
+    -Easy to perform CRUD operation(create, read, update, delete)
+    -It works with any related database using drivers
+    -It forms the foudation of ORM tools like "Hibernate"
+
+Components of JDBC
+    1.DiverManagers- it manages all database drivers
+    2.Drivers- it connect java apps to database
+    3.Connection- it represents the database session
+    4.Statement/ PreparedSatements/ CallableStatment - it is used to excecute sql queries
+    5.ResultSet - it holds the result of executed queries
+
+Types of JDBC drivers
+    1. Type 1 JDBC ODBC Bridge - it used ODBC drivers
+    2. Type 2 Native-API Drivers- - it uses native library of DB 
+    3. Type 3 Network Protocol Driver - it uses middleware server 
+    4. Type 4 Pure Java Driver -direct connection to DB (commonly used)
+        type 4 driver (eg com.mysql.cj.jdbc.Driver)
+
+Step to connect 
+    1. Import JDBC package - import java.sql.*;
+    2. Load and register the driver - Class.forName("com.mysql.cj.jdbc.Driver");
+    3. Establish connection - Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/college", "root", "password");
+    4. Create statement - Statement stmt = con.createStatement();
+    5. Execute queries - ResultSet rs = stmt.executeQuery("SELECT * FROM student");
+    6. Process result - while (rs.next()) {
+                        System.out.println(rs.getInt(1) + " " + 
+                        rs.getString(2));
+                        }
+    7. Close connection - con.close();
+
+10/10/25
+-Statement is use to executesimple sql queries(static)
+-Preparedstatement used to execute parametarized sql queries(dynamic)
+-Statement suitable for fixed sql queries
+-Preparedstatement suitable for queries with variables
